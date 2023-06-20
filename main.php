@@ -6,6 +6,7 @@ class Movie
     public $director;
     public $releaseDate;
     public $genre;
+    public $vote = null;
 
     function __construct($title, $director, $releaseDate, $genre)
     {
@@ -13,12 +14,26 @@ class Movie
         $this->director = $director;
         $this->releaseDate = $releaseDate;
         $this->genre = $genre;
+        
     }
 
+    public function setVote($vote)
+    { if (!is_nan($vote) and ($vote > 0 and $vote <= 5) ) {
+        return $this->vote = "Voto". ": ". $vote;
+    } else{
+        return null;
+    }
+        
+    }
 }
 
 $theNest = new Movie("The nest", "Roberto De Feo", "09/08/2019", "Thriller");
+$theNest->setVote(5);
 $fightClub = new Movie("Fight Club", "David Fincher", "02/07/2003", "Drammatico");
+$fightClub->setVote(5);
+$aceVentura = new Movie("Ace Ventura", "Steve Oedekerk", "22/04/1995", "Commedia");
+$aceVentura->setVote(2);
+
 
 ?>
 
@@ -35,15 +50,22 @@ $fightClub = new Movie("Fight Club", "David Fincher", "02/07/2003", "Drammatico"
 
 <body>
     <div class="movieContainer d-flex">
-        <div class="movieCard m-5 border border-success d-flex flex-column justify-content-center align-items-center">
+        <div class="movieCard m-4 border border-success d-flex flex-column justify-content-center align-items-center">
             <?php foreach ($fightClub as $item) { ?>
 
                 <div class="mb-2"><?php echo ($item) ?></div>
 
             <?php } ?>
         </div>
-        <div class="movieCard m-5 border border-success d-flex flex-column justify-content-center align-items-center">
+        <div class="movieCard m-4 border border-success d-flex flex-column justify-content-center align-items-center">
             <?php foreach ($theNest as $item) { ?>
+
+                <div class="mb-2"><?php echo ($item) ?></div>
+
+            <?php } ?>
+        </div>
+        <div class="movieCard m-4 border border-success d-flex flex-column justify-content-center align-items-center">
+            <?php foreach ($aceVentura as $item) { ?>
 
                 <div class="mb-2"><?php echo ($item) ?></div>
 
