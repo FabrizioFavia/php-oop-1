@@ -19,7 +19,7 @@ class Movie
     public function setVote($vote)
     {
         if (!is_nan($vote) and ($vote > 0 and $vote <= 5)) {
-            return $this->vote = "Voto" . ": " . $vote;
+            return $this->vote = $vote;
         } else {
             return null;
         }
